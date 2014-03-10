@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Plugin_JIRA_Config.xml - rename to Plugin_JIRA_1.xml (or _2, _3 for multiple etc.) and set Enabled to true-->
+<Config>
+  <!--Set Enabled to true to enable the plugin instance -->
+  <Enabled>true</Enabled>
+
+  <!--If this is enabled then logging information will be written to log.txt in the plugin directory-->
+  <EnableLog>true</EnableLog>
+
+  <!--The PureCM repository name -->
+  <PureCMRepository>Example</PureCMRepository>
+
+  <!--The URL to the Jira server -->
+  <!--Ensure you have enabled Remote API Calls and unassigned issed in Jira -->
+  <JiraURL>http://myjiraserver.com</JiraURL>
+
+  <!--The Jira username -->
+  <JiraUser>Administrator</JiraUser>
+
+  <!--The Jira user password -->
+  <JiraPassword>secret</JiraPassword>
+
+  <!--Number of seconds to wait between system checks -->
+  <Interval>30</Interval>
+
+  <!--If you want ot create Jira projects from PureCM projects then set these parameters-->
+  <!--Otherwise just leave enabled to be false-->
+  <ProjectCreation>
+    <!--Whether to create Jira projects from PureCM projects -->
+    <Enabled>true</Enabled>
+    <!--Which Jira project should new projects be based on? Schema templates, etc. -->
+    <!--Leave blank to use the first Jira project. -->
+    <TemplateProject></TemplateProject>
+  </ProjectCreation>
+
+  <!--If you want to create Jira issues from PureCM tasks then set these parameters-->
+  <!--Otherwise just leave enabled to be false-->
+  <TaskCreation>
+    <!--Whether to create Jira issues from PureCM tasks -->
+    <Enabled>true</Enabled>
+    <!--The type of created Jira issue -->
+    <CreationType>Bug</CreationType>
+  </TaskCreation>
+
+  <!--If you want to create Jira issues from PureCM features then set these parameters-->
+  <!--Otherwise just leave enabled to be false-->
+  <FeatureCreation>
+    <!--Whether to create Jira issues from PureCM features -->
+    <Enabled>true</Enabled>
+    <!--The type of created Jira issue -->
+    <CreationType>New Feature</CreationType>
+  </FeatureCreation>
+
+  <!--Set the mappings between Jira statuses-->
+  <StatusMappings>
+    <StatusMapping PureCMState="Open">
+      <JiraStatuses>
+        <JiraStatus>Open</JiraStatus>
+        <JiraStatus>In Progress</JiraStatus>
+        <JiraStatus>Reopened</JiraStatus>
+      </JiraStatuses>
+      <JiraTransitions>
+        <JiraTransition>Start Progress</JiraTransition>
+        <JiraTransition>Stop Progress</JiraTransition>
+        <JiraTransition>Reopen Issue</JiraTransition>
+      </JiraTransitions>
+    </StatusMapping>
+    <StatusMapping PureCMState="Completed">
+      <JiraStatuses>
+        <JiraStatus>Resolved</JiraStatus>
+      </JiraStatuses>
+      <JiraTransitions>
+        <JiraTransition>Resolve Issue</JiraTransition>
+      </JiraTransitions>
+    </StatusMapping>
+    <StatusMapping PureCMState="Closed">
+      <JiraStatuses>
+        <JiraStatus>Closed</JiraStatus>
+      </JiraStatuses>
+      <JiraTransitions>
+        <JiraTransition>Close Issue</JiraTransition>
+      </JiraTransitions>
+    </StatusMapping>
+  </StatusMappings>
+
+  <UserMappings>
+    <UserMapping>
+      <PureCMUser>admin</PureCMUser>
+      <JiraUser>administrator</JiraUser>
+    </UserMapping>
+  </UserMappings>
+
+  <!--Update the PureCM task URLs to use the Jira issue URLs -->
+  <UpdateURL>true</UpdateURL>
+
+  <!--Whether to forcibly synchronize all Jira issues on startup - 'true' or 'false'-->
+  <!--This should only be set to true as a last resort and then reset back to false.-->
+  <!--Any PureCM task operations performed during this force sync will be reverted.-->
+  <ForceJiraSync>false</ForceJiraSync>
+
+  <!--Whether to forcibly synchronize all PureCM tasks on startup - 'true' or 'false'-->
+  <!--This should only be set to true as a last resort and then reset back to false.-->
+  <!--Any Jira issue operations performed during this force sync will be reverted.-->
+  <ForcePureCMSync>false</ForcePureCMSync>
+</Config>

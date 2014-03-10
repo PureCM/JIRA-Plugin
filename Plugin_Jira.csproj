@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ABE21244-311A-4F16-A904-FF603AAFBE6A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Plugin_JIRA</RootNamespace>
+    <AssemblyName>Plugin_JIRA</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\inc\VersionNo.cs">
+      <Link>VersionNo.cs</Link>
+    </Compile>
+    <Compile Include="External Items\ExFactory.cs" />
+    <Compile Include="External Items\ExItem.cs" />
+    <Compile Include="External Items\ExMonitor.cs" />
+    <Compile Include="External Items\ExProject.cs" />
+    <Compile Include="External Items\ExProjectItem.cs" />
+    <Compile Include="External Items\ExTask.cs" />
+    <Compile Include="External Items\ExUser.cs" />
+    <Compile Include="External Items\ExVersion.cs" />
+    <Compile Include="Jira Items\JVersion.cs" />
+    <Compile Include="Jira Items\JUser.cs" />
+    <Compile Include="Jira Items\JTask.cs" />
+    <Compile Include="Jira Items\JProject.cs" />
+    <Compile Include="Jira Items\JMonitor.cs" />
+    <Compile Include="Jira Items\JOptions.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Jira Items\JFactory.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="JiraSoapServiceService.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PureCM Items\PCMFactory.cs" />
+    <Compile Include="PureCM Items\PCMMonitor.cs" />
+    <Compile Include="PureCM Items\PCMProject.cs" />
+    <Compile Include="PureCM Items\PCMTask.cs" />
+    <Compile Include="PureCM Items\PCMUser.cs" />
+    <Compile Include="PureCM Items\PCMVersion.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Plugin_Jira_1.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PureCM.Client\PureCM.Client.csproj">
+      <Project>{026627FF-9F9D-4D2D-BA1E-CDF16517D142}</Project>
+      <Name>PureCM.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PureCM.Server\PureCM.Server.csproj">
+      <Project>{EBAF8A35-1B6D-4203-8981-E41D5E759DC3}</Project>
+      <Name>PureCM.Server</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
